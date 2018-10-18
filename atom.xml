@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tianguanggliu.github.io/"/>
-  <updated>2018-10-17T01:08:53.894Z</updated>
+  <updated>2018-10-18T10:03:58.354Z</updated>
   <id>https://tianguanggliu.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openseadragon</title>
+    <link href="https://tianguanggliu.github.io/2018/10/18/openseadragon/"/>
+    <id>https://tianguanggliu.github.io/2018/10/18/openseadragon/</id>
+    <published>2018-10-18T09:21:29.000Z</published>
+    <updated>2018-10-18T10:03:58.354Z</updated>
+    
+    <summary type="html">
+    
+      openseadragon教程
+    
+    </summary>
+    
+      <category term="HTML5" scheme="https://tianguanggliu.github.io/categories/HTML5/"/>
+    
+    
+      <category term="H5" scheme="https://tianguanggliu.github.io/tags/H5/"/>
+    
+      <category term="移动端" scheme="https://tianguanggliu.github.io/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Blog&#39;</title>
