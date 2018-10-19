@@ -6,25 +6,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="openseadragon, Emper">
-    <meta name="description" content="
+    <meta name="description" content="项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放 . . .
 openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，以纯JavaScript实现，适用于桌面和移动设备。
 
-啊实打实大阿萨德
-
-*列表展示
-*列表展示
-*列表展示
-
-
-
-
-+列表展示
-+列表展示
-+列表展示
-
-
-
-">
+技术背景图片大部分都是压缩过的，大部">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -270,7 +255,7 @@ openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://pgtoq1cmw.bkt.clouddn.com/blog/imgbanner.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -326,31 +311,56 @@ openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
+                <h6 id="项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放"><a href="#项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放" class="headerlink" title="项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放 . . ."></a>项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放 . . .</h6><blockquote>
 <p><a href="https://github.com/openseadragon/openseadragon" title="openseadragon" target="_blank" rel="noopener">openseadragon</a> 基于Web的开源查看器，用于高分辨率可缩放图像，以纯JavaScript实现，适用于桌面和移动设备。</p>
 </blockquote>
-<p>啊实打实大阿萨德</p>
-<ul>
-<li>*列表展示</li>
-<li>*列表展示<ul>
-<li>*列表展示</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>+列表展示</li>
-<li>+列表展示<ul>
-<li>+列表展示</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>-列表展示</li>
-<li>-列表展示<ul>
-<li>-列表展示</li>
-</ul>
-</li>
-</ul>
+<h3 id="技术背景"><a href="#技术背景" class="headerlink" title="技术背景"></a>技术背景</h3><p>图片大部分都是压缩过的，大部分为JPEG PNG BMP其中BMP格式是点阵形式，当图片翻译到内存之后无论压没压缩过都会变成BMP格式放进内存，在这个过程中，图片数据会几倍的增大，就比如JPEG，一张1M大小的JPEG格式的图片，翻译到内存可能就会变成7倍左右，也就是7M会放在电脑内存里面，如果显示一张100M的JPEG图片，放进内存的话可能就会成为1G，好了如果是1G的图片呢，你的电脑内存还够用吗，再如果在手机端显示呢？ <strong>最后找到两个js库来实现项目需求 <a href="https://github.com/Leaflet/Leaflet" target="_blank" rel="noopener">Leaflet</a> 和 <a href="https://github.com/openseadragon/openseadragon" target="_blank" rel="noopener">openseadragon</a></strong></p>
+<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h5 id="一、库文件下载"><a href="#一、库文件下载" class="headerlink" title="一、库文件下载"></a>一、库文件下载</h5><p>首先进入<a href="http://openseadragon.github.io/" target="_blank" rel="noopener">官网</a>或<a href="https://github.com/openseadragon/openseadragon" target="_blank" rel="noopener">GitHub</a>下载工程中我们只需要用到openseadragon.min.js库</p>
+<h5 id="二、准备图片"><a href="#二、准备图片" class="headerlink" title="二、准备图片"></a>二、准备图片</h5><p>OpenSeadragon支持很多图片协议和格式，通常这些图片都是由很多图片的切片组成的，例如一张很大的图，需要剪裁成很多小图，按照一定的命名和存储规则存放。官网为我们提供了许多切图<a href="http://openseadragon.github.io/examples/creating-zooming-images/" target="_blank" rel="noopener">工具</a> 根据需要可以根据编程或客户端来实现，我选取的是<a href="https://download.microsoft.com/download/4/D/5/4D55442C-D183-4F0F-9163-AD31A09BDFC1/Deep%20Zoom%20Composer.msi" target="_blank" rel="noopener">Deep Zoom Composer</a>（点击可直接下载）<br>安装完成后打开软件新建一个工程，把大图片拖进去，显示如下图<br><img src="http://pgtoq1cmw.bkt.clouddn.com/blog/imgdeep-zoom-composer.jpg" width="50%" hegiht="50%" align="center" alt="新工程"></p>
+<p>点击Export，Output Type选择imags，随便起个名字例如bingImg，Export options选择Export as a collection，点击Export即可在相应路径生成文件。如下图，标注部分请注意<br><img src="http://pgtoq1cmw.bkt.clouddn.com/blog/imgexport.jpg" width="50%" hegiht="50%" align="center" alt="导出页面"><br>找到导出后的文件dzc_output_images下的就是我们需要的文件，xml中有代码需要用到的数据，_files文件夹就是所有图片文件。<em>XML如下:</em></p>
+<pre class=" language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Image</span> <span class="token attr-name">TileSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>256<span class="token punctuation">"</span></span> <span class="token attr-name">Overlap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">Format</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jpg<span class="token punctuation">"</span></span> <span class="token attr-name">ServerFormat</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Default<span class="token punctuation">"</span></span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/deepzoom/2009<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Size</span> <span class="token attr-name">Width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1920<span class="token punctuation">"</span></span> <span class="token attr-name">Height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1080<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Image</span><span class="token punctuation">></span></span>
+</code></pre>
+<h5 id="三、代码"><a href="#三、代码" class="headerlink" title="三、代码"></a>三、代码</h5><p>直接上代码，查看完整代码</p>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token keyword">function</span> <span class="token function">openMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        openSeadragonInstance <span class="token operator">=</span> <span class="token function">OpenSeadragon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        minZoomLevel<span class="token punctuation">:</span> defaultZoomLevel<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">// 最小缩放等级</span>
+        animationTime<span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">,</span>
+        visibilityRatio<span class="token punctuation">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span>
+        maxZoomLevel<span class="token punctuation">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+        constrainDuringPan<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        showNavigator<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>               <span class="token comment" spellcheck="true">// 显示导航</span>
+        showZoomControl<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">// 则显示+和 - 按钮以放大和缩小。</span>
+        showHomeControl<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">// 显示主页</span>
+        showFullPageControl<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>         <span class="token comment" spellcheck="true">// 显示全屏</span>
+        iOSDevice<span class="token punctuation">:</span> <span class="token operator">!</span><span class="token function">isAndroid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        immediateRender<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">// 提供非常模糊到锐利的效果。建议将移动设备的设置更改为true。</span>
+        defaultZoomLevel<span class="token punctuation">:</span> defaultZoomLevel<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 首次打开图像或单击主页按钮时使用的缩放级别。如果为0，则调整以适合查看者。</span>
+        useCanvas<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>                    <span class="token comment" spellcheck="true">// 设置为false，即使支持canvas，也不使用HTML canvas元素进行图像渲染。 安卓关闭 ios 开启</span>
+        id<span class="token punctuation">:</span> <span class="token string">'openSeadragon'</span><span class="token punctuation">,</span>
+        prefixUrl<span class="token punctuation">:</span> <span class="token string">'./images/'</span><span class="token punctuation">,</span>
+        preserveImageSizeOnResize<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        minPixelRatio<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        tileSources<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            Image<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                xmlns<span class="token punctuation">:</span> <span class="token string">'http://schemas.microsoft.com/deepzoom/2009'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 在xml中可以找到</span>
+                Url<span class="token punctuation">:</span> <span class="token string">'./ios_files/'</span><span class="token punctuation">,</span>                                 <span class="token comment" spellcheck="true">// 文件夹</span>
+                Overlap<span class="token punctuation">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
+                TileSize<span class="token punctuation">:</span> <span class="token string">'256'</span><span class="token punctuation">,</span>                                    <span class="token comment" spellcheck="true">// 在xml中可以找到</span>
+                Format<span class="token punctuation">:</span> <span class="token string">'jpg'</span><span class="token punctuation">,</span>                                      <span class="token comment" spellcheck="true">// 在xml中可以找到</span>
+                Size<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    Height<span class="token punctuation">:</span> <span class="token string">'46756'</span><span class="token punctuation">,</span>
+                    Width<span class="token punctuation">:</span> <span class="token string">'2071'</span>
+                <span class="token punctuation">}</span>
+
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
 
             </div>
             <hr/>
@@ -512,32 +522,16 @@ openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，
                 <a href="/2018/10/18/openseadragon/">
                     <div class="card-image">
                         
+                        <img src="http://pgtoq1cmw.bkt.clouddn.com/blog/imgbanner.jpg" class="responsive-img" alt="openseadragon">
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="openseadragon">
-                        
-                        <span class="card-title">openseadragon</span>
+                        <span class="card-title">openseadragon副本</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
+                    <div class="summary">项目介绍：H5页面，实现长按按钮图片（清明上河图）自动播放 . . .
 openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，以纯JavaScript实现，适用于桌面和移动设备。
 
-啊实打实大阿萨德
-
-*列表展示
-*列表展示
-*列表展示
-
-
-
-
-+列表展示
-+列表展示
-+列表展示
-
-
-
-</div>
+技术背景图片大部分都是压缩过的，大部</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-18
@@ -575,28 +569,40 @@ openseadragon 基于Web的开源查看器，用于高分辨率可缩放图像，
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/10/17/blog/">
+                <a href="/2018/10/17/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Blog'">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">Blog'</span>
+                        <span class="card-title">openseadragon副本</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary"></div>
+                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            emper
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/前端/" target="_blank">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
                 </div>
                 
             </div>

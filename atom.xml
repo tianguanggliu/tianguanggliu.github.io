@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tianguanggliu.github.io/"/>
-  <updated>2018-10-18T10:03:58.354Z</updated>
+  <updated>2018-10-19T03:01:24.000Z</updated>
   <id>https://tianguanggliu.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://tianguanggliu.github.io/2018/10/18/openseadragon/"/>
     <id>https://tianguanggliu.github.io/2018/10/18/openseadragon/</id>
     <published>2018-10-18T09:21:29.000Z</published>
-    <updated>2018-10-18T10:03:58.354Z</updated>
+    <updated>2018-10-19T03:01:24.000Z</updated>
     
     <summary type="html">
     
@@ -39,25 +39,11 @@
   </entry>
   
   <entry>
-    <title>Blog&#39;</title>
-    <link href="https://tianguanggliu.github.io/2018/10/17/blog/"/>
-    <id>https://tianguanggliu.github.io/2018/10/17/blog/</id>
-    <published>2018-10-17T01:08:53.000Z</published>
-    <updated>2018-10-17T01:08:53.894Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="https://tianguanggliu.github.io/2018/10/17/hello-world/"/>
     <id>https://tianguanggliu.github.io/2018/10/17/hello-world/</id>
     <published>2018-10-17T00:55:10.084Z</published>
-    <updated>2018-10-17T00:47:51.624Z</updated>
+    <updated>2018-10-19T03:08:33.752Z</updated>
     
     <summary type="html">
     
@@ -71,6 +57,10 @@
     
     </summary>
     
+      <category term="前端" scheme="https://tianguanggliu.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="https://tianguanggliu.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
