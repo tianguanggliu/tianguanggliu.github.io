@@ -5,9 +5,9 @@ $(function () {
     let articleCardHover = function () {
         let animateClass = 'animated pulse';
         $('article .article').hover(function () {
-            $(this).addClass(animateClass);
+          //  $(this).addClass(animateClass);
         }, function () {
-            $(this).removeClass(animateClass);
+          //  $(this).removeClass(animateClass);
         });
     };
     articleCardHover();
