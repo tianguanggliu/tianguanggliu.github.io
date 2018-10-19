@@ -437,6 +437,28 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '6aec2ee93044fa63b62c',
+        clientSecret: 'd6a561b89cd54705855642b167e652fa6c8ff5d3',
+        repo: 'https://github.com/tianguanggliu/tianguanggliu.github.io',
+        owner: 'tianguangliu',
+        admin: "tianguangliu",
+        id: '2018-10-19T16-49-13',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
 
     
 
