@@ -1,3 +1,6 @@
+---
+layout: false
+---
 <html lang="zh-cn">
 
 <head>
@@ -7,19 +10,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="format-detection" content="telephone=no">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta charset='UTF-8'>
     <title>东易清明上河图</title>
-    <script src="http://pgtoq1cmw.bkt.clouddn.com/blog-case/js/openseadragon.min.js"></script>
+    <script src='http://pgtoq1cmw.bkt.clouddn.com/blog-case/js/openseadragon.min.js'></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="http://pgtoq1cmw.bkt.clouddn.com/blog-case/css/qmsht-index.css">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 
 <body style="margin: 0">
-    <audio src="http://pgtoq1cmw.bkt.clouddn.com/blog-case/audio/qmsht-bg.mp3" id="music" loop></audio>
+    <audio src='http://pgtoq1cmw.bkt.clouddn.com/blog-case/audio/qmsht-bg.mp3' id="music" loop ></audio>
     <div id="toolbarDiv"></div>
-    <div id="openSeadragon" style="width:100vw; height:100vh;"></div>
+    <div id='openSeadragon' style='width:100vw; height:100vh;'></div>
     <div id="longpress-btn"></div>
     <div id="outerWrap">
             <section id="sec-load" style="display: block;">
@@ -32,8 +34,8 @@
     </div>
     <section id="sec-btn">
             <div id="end-btns">
-                <a href="javascript:;" id="share-btn" alt="邀请好友观看" target="_blank" rel="noopener"></a>
-                <a href="javascript:;" id="play-again" alt="再看一次" target="_blank" rel="noopener"></a>
+                <a href="javascript:;" id="share-btn" alt="邀请好友观看"></a>
+                <a href="javascript:;" id="play-again" alt="再看一次"></a>
             </div>
     </section>
     <section id="sec-share"></section>
@@ -41,7 +43,7 @@
 <script>
     "undefined"!=typeof jQuery&&!function(a){"use strict";a.imgpreload=function(b,c){c=a.extend({},a.fn.imgpreload.defaults,c instanceof Function?{all:c}:c),"string"==typeof b&&(b=[b]);var d=[];a.each(b,function(e,f){var g=new Image,h=f,i=g;"string"!=typeof f&&(h=a(f).attr("src")||a(f).css("background-image").replace(/^url\((?:"|')?(.*)(?:'|")?\)$/gm,"$1"),i=f),a(g).bind("load error",function(e){d.push(i),a.data(i,"loaded","error"==e.type?!1:!0),c.each instanceof Function&&c.each.call(i,d.slice(0)),d.length>=b.length&&c.all instanceof Function&&c.all.call(d),a(this).unbind("load error")}),g.src=h})},a.fn.imgpreload=function(b){return a.imgpreload(this,b),this},a.fn.imgpreload.defaults={each:null,all:null}}(jQuery);
 </script>
-<script type="text/javascript">
+<script type='text/javascript'>
     var defaultZoomLevel = 1;
     var openSeadragonInstance,
         viewport,
