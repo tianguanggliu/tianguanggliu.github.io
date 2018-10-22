@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.emper.cn/case/openseadragon.html</loc>
+    <loc>https://blog.emper.cn/cases/index.html</loc>
     
-    <lastmod>2018-10-22T03:30:14.769Z</lastmod>
+    <lastmod>2018-10-22T03:52:21.175Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.emper.cn/cases/index/openseadragon.html</loc>
+    
+    <lastmod>2018-10-22T03:45:01.623Z</lastmod>
     
   </url>
   
