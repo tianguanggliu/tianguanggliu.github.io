@@ -1,0 +1,231 @@
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="cache-control" content="max-age=86400">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta charset='UTF-8'>
+    <title>东易清明上河图</title>
+    <script src='http://pgtoq1cmw.bkt.clouddn.com/blog-case/js/openseadragon.min.js'></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://pgtoq1cmw.bkt.clouddn.com/blog-case/css/qmsht-index.css">
+</head>
+
+<body style="margin: 0">
+    <audio src='http://pgtoq1cmw.bkt.clouddn.com/blog-case/audio/qmsht-bg.mp3' id="music" loop ></audio>
+    <div id="toolbarDiv"></div>
+    <div id='openSeadragon' style='width:100vw; height:100vh;'></div>
+    <div id="longpress-btn"></div>
+    <div id="outerWrap">
+            <section id="sec-load" style="display: block;">
+                <div id="load-p">
+                    0%
+                </div>
+                <p></p>
+                <dl class="horizontal"><dt class="vertical"><!--<b id="load-ball"></b>--></dt></dl>
+            </section>
+    </div>
+    <section id="sec-btn">
+            <div id="end-btns">
+                <a href="javascript:;" id="share-btn" alt="邀请好友观看"></a>
+                <a href="javascript:;" id="play-again" alt="再看一次"></a>
+            </div>
+    </section>
+    <section id="sec-share"></section>
+</body>
+<script>
+    "undefined"!=typeof jQuery&&!function(a){"use strict";a.imgpreload=function(b,c){c=a.extend({},a.fn.imgpreload.defaults,c instanceof Function?{all:c}:c),"string"==typeof b&&(b=[b]);var d=[];a.each(b,function(e,f){var g=new Image,h=f,i=g;"string"!=typeof f&&(h=a(f).attr("src")||a(f).css("background-image").replace(/^url\((?:"|')?(.*)(?:'|")?\)$/gm,"$1"),i=f),a(g).bind("load error",function(e){d.push(i),a.data(i,"loaded","error"==e.type?!1:!0),c.each instanceof Function&&c.each.call(i,d.slice(0)),d.length>=b.length&&c.all instanceof Function&&c.all.call(d),a(this).unbind("load error")}),g.src=h})},a.fn.imgpreload=function(b){return a.imgpreload(this,b),this},a.fn.imgpreload.defaults={each:null,all:null}}(jQuery);
+</script>
+<script type='text/javascript'>
+    var defaultZoomLevel = 1;
+    var openSeadragonInstance,
+        viewport,
+        point,
+        percentage,
+        moveY = 0,
+        maxY,
+        timInterval,
+        loadP=0,
+        loadTp;
+
+/** 文档加载完毕 **/
+    $(function() {
+       LoadImages();
+       openMap();
+        $('#btn').click(function() {
+            beganToMove();
+            
+            console.log('start')
+        })
+    })
+/** 开始加载 图片 **/
+function openMap() {
+        openSeadragonInstance = OpenSeadragon({
+        minZoomLevel: defaultZoomLevel,     // 最小缩放等级
+        animationTime: 0.3,
+        visibilityRatio: 1.0,
+        maxZoomLevel: 16,
+        constrainDuringPan: true,
+        showNavigator: false,               // 显示导航
+        showZoomControl: false,             // 则显示+和 - 按钮以放大和缩小。
+        showHomeControl: false,             // 显示主页
+        showFullPageControl: false,         // 显示全屏
+        iOSDevice: !isAndroid(),
+        immediateRender: true,              // 首先渲染最佳最近水平，忽略降低水平，提供非常模糊到锐利的效果。建议将移动设备的设置更改为true。
+        defaultZoomLevel: defaultZoomLevel, // 首次打开图像或单击主页按钮时使用的缩放级别。如果为0，则调整以适合查看者。
+        useCanvas: true,            // 设置为false，即使支持canvas，也不使用HTML canvas元素进行图像渲染。 安卓关闭 ios 开启
+        id: 'openSeadragon',
+        prefixUrl: './images/',
+        preserveImageSizeOnResize: true,
+        minPixelRatio: 1,
+        tileSources: {
+            Image: {
+                xmlns: 'http://schemas.microsoft.com/deepzoom/2009',
+                Url: 'http://pgtoq1cmw.bkt.clouddn.com/blog-case/img/qmsht/flies/',
+                Overlap: '1',
+                TileSize: '256',
+                Format: 'jpg',
+                Size: {
+                    Height: '46756',
+                    Width: '2071'
+                }
+
+            }
+
+        }
+
+    });
+    viewport = openSeadragonInstance.viewport;
+    point = OpenSeadragon.Point;
+    percentage = viewport.getBounds().height / viewport.getBounds().width;
+    moveY = 0;
+    maxY = 46756/2071 - percentage;
+    openSeadragonInstance.addHandler('canvas-click', function(event) {
+        console.log(event)
+    })
+    mapInit();
+}
+
+/** 长按按钮press js 控制移动图像 **/
+function beganToMove() {
+    if (timInterval) {clearInterval(timInterval)}
+    timInterval = setInterval(function() {
+        var newBounds = new OpenSeadragon.Rect(0, moveY, 1, percentage); 
+        viewport.fitBounds(newBounds, false);
+        moveY = moveY + maxY/10300;
+        if (moveY >= maxY) {
+            clearInterval(timInterval);
+            $("#sec-btn").css('display', 'flex');
+            $("#play-again").click(function() {
+                mapInit();
+                $("#sec-btn").fadeOut(0);
+                $("#longpress-btn").fadeIn(400);
+            })
+            $("#share-btn").click(function() {
+                $("#sec-share").fadeIn(200).click(function() {
+                    $("#sec-share").fadeOut(200)
+                });
+            })
+
+            $("#longpress-btn").fadeOut(400);
+            audioPlay(false);
+        }
+    },10) 
+}
+/** 加载图像完成 初始化把图像 left-top 对齐 **/
+function mapInit() {
+    moveY = 0;
+    var timeout = setTimeout(function() {
+    var newBounds = new OpenSeadragon.Rect(0, 0, 1, percentage); 
+    viewport.fitBounds(newBounds, true);
+    clearTimeout(timeout)
+    })
+}
+</script>
+<script>
+
+/** 长按按钮 touch事件 **/
+function SetHamm(){
+	$("#longpress-btn").off("touchstart").on( "touchstart", btnPanPressAct);
+	$( "#longpress-btn" ).off("touchend").on( "touchend", btnPanEndAct);
+}
+function DestroyPress(){
+	$( "#longpress-btn" ).off("touchstart");
+	$( "#longpress-btn" ).off("touchend");
+}
+function btnPanPressAct(e){
+    e.preventDefault();
+    audioPlay(true);
+    beganToMove();
+    console.log('touchstart')
+}
+function btnPanEndAct(e){
+    e.preventDefault();
+    audioPlay(false);
+    if (timInterval) {clearInterval(timInterval)}
+    console.log('touchend')
+}
+
+/** 判断屏幕方向,如果是横屏提示锁定方向旋转 ***/    
+(function rotate() {
+    var orientation = window.orientation;
+    if (orientation == 90 || orientation == -90) {
+        alert("请使用锁定方向旋转");
+    }
+    window.onorientationchange = function() {
+        document.body.style.display = "block";
+        rotate();
+    };
+})()
+
+/** 判断是否 Android 系统 **/
+function isAndroid() {
+    return navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1
+}
+
+/** 音乐控制方法 params flag=true 播放**/
+function audioPlay(flag) {
+    var musicEle = $('#music');
+    if (flag) {
+        musicEle[0].play()
+    } else {
+        musicEle[0].pause()
+    }
+}
+/** 加载图片 **/
+function LoadImages(){
+	var loadImages=["hand","btn-share","btn-again","share_bg"];
+	var basePath="http://pgtoq1cmw.bkt.clouddn.com/blog-case/img/qmsht/";
+	for(var i=0;i<loadImages.length;i++) {
+        loadImages[i] = basePath + loadImages[i] + '.png'
+    }
+	jQuery.imgpreload(loadImages,{
+		number: 4,
+		each: function(imgs){
+			var loadPercent= (imgs.length*100/loadImages.length + 0.5 ) | 0;  
+			loadTp=parseInt(loadPercent);
+		},
+		all: function(){loadTp=100;}
+    });
+    var nowTimeNumber = $.now();
+	var loadInterv = setInterval(function() {
+        loadP+=1;
+	    (loadP>loadTp) && (loadP=loadTp);
+	    if(loadP>=100){
+		    setTimeout(function() {
+                $("#load-p").text("100%");
+                $("#outerWrap").fadeOut(400, SetHamm);
+                $("#longpress-btn").fadeIn(400);
+                clearInterval(loadInterv)
+            }, $.now() - nowTimeNumber > 4000 ? 0 : 4000 + nowTimeNumber - $.now())
+	    }else{
+		    $("#load-p").text(loadP+"%");
+	    }
+    }, 20);
+}
+</script>
+</html>
