@@ -1472,6 +1472,8 @@ footer a {
 
 footer .copy-right {
     color: #d5d5d5;
+    font-size: 10px;
+    text-align: left;
 }
 
 /*搜索层样式*/
