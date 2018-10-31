@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>material</title>
+      <link href="/20181031/material.html"/>
+      <url>/20181031/material.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h3><blockquote><p><a href="https://material.angular.io/" title="Angular Material" target="_blank" rel="noopener">Angular Material</a> Material Design components for Angular, 最近项目中用到 <strong> Angular Material </strong> 按照官网 <a href="https://material.angular.io/guides" target="_blank" rel="noopener">guides</a> 完成后发现手势相关的组件无效！！</p></blockquote><h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>首先按照官方指导引入 hammerjs, 然后在app.module中加入如下代码即可</p><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> GestureConfig<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/material'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule<span class="token punctuation">,</span> HAMMER_GESTURE_CONFIG<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span><span class="token punctuation">;</span>@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> provide<span class="token punctuation">:</span> HAMMER_GESTURE_CONFIG<span class="token punctuation">,</span> useClass<span class="token punctuation">:</span> GestureConfig <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  bootstrap<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>希望我的分享能解决您遇到的问题！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Angular </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Material </tag>
+            
+            <tag> Angular </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>openseadragon</title>
       <link href="/20181018/openseadragon.html"/>
       <url>/20181018/openseadragon.html</url>
